@@ -219,6 +219,29 @@ class Header extends React.Component<Props, State> {
                 href="https://github.com/facebook/react/"
                 target="_blank"
                 rel="noopener">
+                About me
+              </a>
+              <a
+                css={{
+                  color: colors.dark,
+                  padding: '5px 10px',
+                  marginLeft: 10,
+                  whiteSpace: 'nowrap',
+                  ...fonts.small,
+
+                  ':hover': {
+                    color: colors.brand,
+                  },
+
+                  ':focus': {
+                    outline: 0,
+                    backgroundColor: colors.lighter,
+                    borderRadius: 15,
+                  },
+                }}
+                href="https://github.com/facebook/react/"
+                target="_blank"
+                rel="noopener">
                 Facebook
                 <ExternalLinkSvg
                   cssProps={{
