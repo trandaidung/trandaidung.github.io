@@ -1,0 +1,21 @@
+project_identifier_env: CROWDIN_REACT_PROJECT_ID
+api_key_env: CROWDIN_REACT_API_KEY
+base_path: "./"
+preserve_hierarchy: true
+
+files:
+  -
+    source: '/content/vocabulary/*.md'
+    languages_mapping: *anchor
+  -
+    source: '/content/grammar/*.md'
+    languages_mapping: *anchor
+  -
+    source: '/content/communication/*.md'
+    languages_mapping: *anchor
+  -
+    source: '/README.md'
+    languages_mapping: *anchor
+  -
+    source: '/content/404.md'
+    languages_mapping: *anchor
