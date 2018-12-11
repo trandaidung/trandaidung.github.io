@@ -25,7 +25,7 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="An Blog &ndash; A blog to share some interests about English."
+          title="An &ndash; Blog học tiếng Anh."
           ogUrl={createOgUrl('index.html')}
         />
         <div css={[layoutWrapper]}>

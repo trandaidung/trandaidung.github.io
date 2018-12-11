@@ -8,10 +8,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
-    rssFeedTitle: 'React',
-    rssFeedDescription: 'A JavaScript library for building user interfaces',
+    title: 'An: Blog học tiếng Anh.',
+    siteUrl: 'https://iaman.cf',
+    rssFeedTitle: 'An',
+    rssFeedDescription: 'Blog học tiếng Anh.',
   },
   plugins: [
     'gatsby-source-react-error-codes',

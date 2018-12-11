@@ -8,7 +8,7 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-const defaultDescription = 'A blog to share some interests about English.';
+const defaultDescription = 'Blog học tiếng Anh.';
 
 type Props = {
   title: string,
