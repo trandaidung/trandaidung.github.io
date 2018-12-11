@@ -11,22 +11,19 @@ import FooterLink from './FooterLink';
 import FooterNav from './FooterNav';
 import MetaTitle from 'templates/components/MetaTitle';
 import React from 'react';
-import * as style from './FooterStyles';
-
+import {colors, media} from 'theme';
 import ossLogoPng from 'icons/logo.svg';
 
 const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
   const footerContainerStyle = !layoutHasSidebar
-    ? style.footerWithSideBar
-    : style.footerWithoutSideBar;
-  const logoStyle = !layoutHasSidebar
-    ? style.logoWithSideBar
-    : style.logoWithoutSideBar;
+    ? footerWithSideBar
+    : footerWithoutSideBar;
+  const logoStyle = !layoutHasSidebar ? logoWithSideBar : logoWithoutSideBar;
   return (
-    <footer css={[style.footer]}>
+    <footer css={[footer]}>
       <Container>
-        <div css={[style.footerContainer, footerContainerStyle]}>
-          <div css={[style.footerWrapper]}>
+        <div css={[footerContainer, footerContainerStyle]}>
+          <div css={[footerWrapper]}>
             <FooterNav layoutHasSidebar={layoutHasSidebar}>
               <MetaTitle onDark={true}>Categories</MetaTitle>
               <FooterLink to="/vocabulary/">Vocabulary</FooterLink>
@@ -44,21 +41,133 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
               </ExternalFooterLink>
             </FooterNav>
           </div>
-          <section css={[style.footerLogo, logoStyle]}>
+          <section css={[footerLogo, logoStyle]}>
             <a
-              css={[style.logoWrapper]}
+              css={[logoWrapper]}
               href="https://code.facebook.com/projects/"
               target="_blank"
               rel="noopener">
-              <img alt="an" css={[style.logoImg]} src={ossLogoPng} />
-              <span css={[style.logoText]}>an</span>
+              <img alt="an" css={[logoImg]} src={ossLogoPng} />
+              <span css={[logoText]}>an</span>
             </a>
-            <p css={[style.copyright]}>Copyright © 2018 Thao An.</p>
+            <p css={[copyright]}>Copyright © 2018 Thao An.</p>
           </section>
         </div>
       </Container>
     </footer>
   );
+};
+
+const footer = {
+  backgroundColor: colors.brander,
+  color: colors.white,
+  paddingTop: 10,
+  paddingBottom: 50,
+
+  [media.size('sidebarFixed')]: {
+    paddingTop: 40,
+  },
+};
+
+const footerContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+};
+
+const footerWithSideBar = {
+  [media.between('small', 'medium')]: {
+    paddingRight: null,
+  },
+
+  [media.between('large', 'largerSidebar')]: {
+    paddingRight: null,
+  },
+  [media.between('largerSidebar', 'sidebarFixed', true)]: {
+    paddingRight: null,
+  },
+};
+
+const footerWithoutSideBar = {
+  [media.between('small', 'medium')]: {
+    paddingRight: 240,
+  },
+
+  [media.between('large', 'largerSidebar')]: {
+    paddingRight: 280,
+  },
+  [media.between('largerSidebar', 'sidebarFixed', true)]: {
+    paddingRight: 380,
+  },
+};
+
+const footerWrapper = {
+  flexWrap: 'wrap',
+  display: 'flex',
+
+  [media.lessThan('large')]: {
+    width: '100%',
+  },
+  [media.greaterThan('xlarge')]: {
+    width: 'calc(100% / 3 * 2)',
+    paddingLeft: 40,
+  },
+};
+
+const footerLogo = {
+  paddingTop: 40,
+  display: 'block !important', // Override 'Installation' <style> specifics
+
+  [media.greaterThan('xlarge')]: {
+    width: 'calc(100% / 3)',
+    order: -1,
+  },
+  [media.lessThan('large')]: {
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: 40,
+  },
+};
+
+const logoWithSideBar = {
+  [media.greaterThan('large')]: {
+    order: -1,
+    width: null,
+  },
+};
+
+const logoWithoutSideBar = {
+  [media.greaterThan('large')]: {
+    order: -1,
+    width: 'calc(100% / 3)',
+  },
+};
+
+const logoWrapper = {
+  display: 'flex',
+  alignItems: 'center',
+
+  [media.lessThan('large')]: {
+    justifyContent: 'center',
+  },
+};
+
+const logoImg = {
+  maxWidth: 100,
+  height: 'auto',
+};
+
+const logoText = {
+  color: colors.white,
+  marginLeft: 20,
+  fontWeight: 700,
+  fontSize: 50,
+  lineHeight: '50px',
+};
+
+const copyright = {
+  color: colors.subtleOnDark,
+  paddingTop: 15,
 };
 
 export default Footer;
