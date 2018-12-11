@@ -73,16 +73,20 @@ class Header extends React.Component<Props, State> {
     }
 
     return (
+      <div 
+        css={{
+          backgroundColor: colors.white,
+          position: 'fixed',
+          zIndex: 1,
+          width: '100%',
+          top: 0,
+          left: 0,
+        }}>
       <header
         css={[
           headerType,
           {
             color: colors.white,
-            position: 'fixed',
-            zIndex: 1,
-            width: '100%',
-            top: 0,
-            left: 0,
             transition: 'background-color 0.3s linear',
           },
         ]}>
@@ -255,6 +259,7 @@ class Header extends React.Component<Props, State> {
           </div>
         </Container>
       </header>
+      </div>
     );
   }
 }
@@ -264,7 +269,7 @@ const whiteHeaderStyle = {
 };
 
 const normalHeaderStyle = {
-  backgroundColor: colors.darker,
+  backgroundColor: colors.bgHeader,
 };
 
 export default Header;

@@ -15,6 +15,7 @@ const colors = {
   lighter: '#373940', // light blue
   dark: '#282c34', // dark blue
   darker: '#fccd04', // really dark blue
+  bgHeader: 'rgba(252, 205, 4, .75)', // really dark blue
   brand: '#540CFA', // electric blue
   brander: '#343161',
   brandLight: '#bbeffd',
