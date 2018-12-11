@@ -7,7 +7,7 @@
 
 import {Link} from 'gatsby';
 import React from 'react';
-import {colors} from 'theme';
+import * as style from './FooterStyles';
 
 import type {Node} from 'react';
 
@@ -18,15 +18,7 @@ type Props = {
 };
 
 const FooterLink = ({children, target, to}: Props) => (
-  <Link
-    css={{
-      lineHeight: 2,
-      ':hover': {
-        color: colors.brand,
-      },
-    }}
-    to={to}
-    target={target}>
+  <Link css={[style.footerLink]} to={to} target={target}>
     {children}
   </Link>
 );

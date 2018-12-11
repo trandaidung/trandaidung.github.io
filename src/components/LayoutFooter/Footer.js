@@ -11,112 +11,54 @@ import FooterLink from './FooterLink';
 import FooterNav from './FooterNav';
 import MetaTitle from 'templates/components/MetaTitle';
 import React from 'react';
-import {colors, media} from 'theme';
+import * as style from './FooterStyles';
 
-import ossLogoPng from 'images/oss_logo.png';
+import ossLogoPng from 'icons/logo.svg';
 
-const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
-  <footer
-    css={{
-      backgroundColor: colors.brander,
-      color: colors.white,
-      paddingTop: 10,
-      paddingBottom: 50,
-
-      [media.size('sidebarFixed')]: {
-        paddingTop: 40,
-      },
-    }}>
-    <Container>
-      <div
-        css={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-
-          [media.between('small', 'medium')]: {
-            paddingRight: layoutHasSidebar ? 240 : null,
-          },
-
-          [media.between('large', 'largerSidebar')]: {
-            paddingRight: layoutHasSidebar ? 280 : null,
-          },
-          [media.between('largerSidebar', 'sidebarFixed', true)]: {
-            paddingRight: layoutHasSidebar ? 380 : null,
-          },
-        }}>
-        <div
-          css={{
-            flexWrap: 'wrap',
-            display: 'flex',
-
-            [media.lessThan('large')]: {
-              width: '100%',
-            },
-            [media.greaterThan('xlarge')]: {
-              width: 'calc(100% / 3 * 2)',
-              paddingLeft: 40,
-            },
-          }}>
-          <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Categories</MetaTitle>
-            <FooterLink to="/vocabulary/">Vocabulary</FooterLink>
-            <FooterLink to="/grammar/">Grammar</FooterLink>
-            <FooterLink to="/communication/">Communication</FooterLink>
-          </FooterNav>
-          <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Channels</MetaTitle>
-            <ExternalFooterLink
-              href="https://www.facebook.com/react"
+const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
+  const footerContainerStyle = !layoutHasSidebar
+    ? style.footerWithSideBar
+    : style.footerWithoutSideBar;
+  const logoStyle = !layoutHasSidebar
+    ? style.logoWithSideBar
+    : style.logoWithoutSideBar;
+  return (
+    <footer css={[style.footer]}>
+      <Container>
+        <div css={[style.footerContainer, footerContainerStyle]}>
+          <div css={[style.footerWrapper]}>
+            <FooterNav layoutHasSidebar={layoutHasSidebar}>
+              <MetaTitle onDark={true}>Categories</MetaTitle>
+              <FooterLink to="/vocabulary/">Vocabulary</FooterLink>
+              <FooterLink to="/grammar/">Grammar</FooterLink>
+              <FooterLink to="/communication/">Communication</FooterLink>
+            </FooterNav>
+            <FooterNav layoutHasSidebar={layoutHasSidebar}>
+              <MetaTitle onDark={true}>Others</MetaTitle>
+              <FooterLink to="/grammar/">About me</FooterLink>
+              <ExternalFooterLink
+                href="https://www.facebook.com/react"
+                target="_blank"
+                rel="noopener">
+                Facebook
+              </ExternalFooterLink>
+            </FooterNav>
+          </div>
+          <section css={[style.footerLogo, logoStyle]}>
+            <a
+              css={[style.logoWrapper]}
+              href="https://code.facebook.com/projects/"
               target="_blank"
               rel="noopener">
-              Facebook
-            </ExternalFooterLink>
-          </FooterNav>
+              <img alt="an" css={[style.logoImg]} src={ossLogoPng} />
+              <span css={[style.logoText]}>an</span>
+            </a>
+            <p css={[style.copyright]}>Copyright © 2018 Thao An.</p>
+          </section>
         </div>
-        <section
-          css={{
-            paddingTop: 40,
-            display: 'block !important', // Override 'Installation' <style> specifics
-
-            [media.greaterThan('xlarge')]: {
-              width: 'calc(100% / 3)',
-              order: -1,
-            },
-            [media.greaterThan('large')]: {
-              order: -1,
-              width: layoutHasSidebar ? null : 'calc(100% / 3)',
-            },
-            [media.lessThan('large')]: {
-              textAlign: 'center',
-              width: '100%',
-              paddingTop: 40,
-            },
-          }}>
-          <a
-            href="https://code.facebook.com/projects/"
-            target="_blank"
-            rel="noopener">
-            <img
-              alt="Facebook Open Source"
-              css={{
-                maxWidth: 160,
-                height: 'auto',
-              }}
-              src={ossLogoPng}
-            />
-          </a>
-          <p
-            css={{
-              color: colors.subtleOnDark,
-              paddingTop: 15,
-            }}>
-            Copyright © 2018 Facebook Inc.
-          </p>
-        </section>
-      </div>
-    </Container>
-  </footer>
-);
+      </Container>
+    </footer>
+  );
+};
 
 export default Footer;
