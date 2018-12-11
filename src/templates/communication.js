@@ -28,7 +28,6 @@ const toSectionList = allMarkdownRemark => [
 const Communication = ({data, location}) => (
   <Layout location={location}>
     <MarkdownPage
-      authors={data.markdownRemark.frontmatter.author}
       createLink={createLinkBlog}
       date={data.markdownRemark.fields.date}
       location={location}
@@ -47,12 +46,6 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 500)
       frontmatter {
         title
-        author {
-          frontmatter {
-            name
-            url
-          }
-        }
       }
       fields {
         date(formatString: "MMMM DD, YYYY")

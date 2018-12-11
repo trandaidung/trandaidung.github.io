@@ -13,14 +13,12 @@ import React from 'react';
 import StickyResponsiveSidebar from 'components/StickyResponsiveSidebar';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import findSectionForPath from 'utils/findSectionForPath';
-import toCommaSeparatedList from 'utils/toCommaSeparatedList';
 import {sharedStyles} from 'theme';
 import createOgUrl from 'utils/createOgUrl';
 
 import type {Node} from 'types';
 
 type Props = {
-  authors: Array<string>,
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
   date?: string,
   enableScrollSync?: boolean,
@@ -44,7 +42,6 @@ const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
 };
 
 const MarkdownPage = ({
-  authors = [],
   createLink,
   date,
   enableScrollSync,
@@ -54,7 +51,6 @@ const MarkdownPage = ({
   sectionList,
   titlePostfix = '',
 }: Props) => {
-  const hasAuthors = authors.length > 0;
   const titlePrefix = markdownRemark.frontmatter.title || '';
 
   const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
@@ -83,24 +79,7 @@ const MarkdownPage = ({
             <Flex type="article" direction="column" grow="1" halign="stretch">
               <MarkdownHeader title={titlePrefix} />
 
-              {(date || hasAuthors) && (
-                <div css={{marginTop: 15}}>
-                  {date}{' '}
-                  {hasAuthors && (
-                    <span>
-                      by{' '}
-                      {toCommaSeparatedList(authors, author => (
-                        <a
-                          css={sharedStyles.link}
-                          href={author.frontmatter.url}
-                          key={author.frontmatter.name}>
-                          {author.frontmatter.name}
-                        </a>
-                      ))}
-                    </span>
-                  )}
-                </div>
-              )}
+              {date && <div css={{marginTop: 15}}>{date} </div>}
 
               <div css={sharedStyles.articleLayout.content}>
                 <div

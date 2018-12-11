@@ -1,6 +1,5 @@
 ---
 title: "Markdown Demo"
-author: [gaearon]
 ---
 
 How do I format text in markdown?
