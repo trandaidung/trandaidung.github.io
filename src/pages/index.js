@@ -12,34 +12,14 @@ import React, {Component} from 'react';
 import {graphql, Link} from 'gatsby';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import Layout from 'components/Layout';
-import loadScript from 'utils/loadScript';
 import createOgUrl from 'utils/createOgUrl';
-import {babelURL} from 'site-constants';
-import {keys, split} from 'lodash';
+import {keys} from 'lodash';
 import {colors, media, sharedStyles} from 'theme';
 
 import bookLoverSvg from 'images/book_lover.svg';
 
 class Home extends Component {
-  state = {
-    babelLoaded: false,
-  };
-
-  componentDidMount() {
-    loadScript(babelURL).then(
-      () => {
-        this.setState({
-          babelLoaded: true,
-        });
-      },
-      error => {
-        console.error('Babel failed to load.');
-      },
-    );
-  }
-
   render() {
-    const {babelLoaded} = this.state;
     const {data, location} = this.props;
 
     return (
@@ -94,10 +74,12 @@ class Home extends Component {
                           {type}
                         </Link>
                       </div>
-                      <div css={[postDescription]}>
-                        {split(data[type].edges[0].node.html, /<[^>]*>/g, 2)[1]}
-                        ...
-                      </div>
+                      <div
+                        css={[postDescription]}
+                        dangerouslySetInnerHTML={{
+                          __html: data[type].edges[0].node.html,
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
@@ -330,7 +312,21 @@ const categoryLink = {
 };
 
 const postDescription = {
-  color: colors.subtle,
+  '& > *': {
+    display: 'none',
+  },
+
+  '& > p:first-child': {
+    display: 'unset',
+    color: colors.subtle,
+    fontSize: '16px !important',
+    fontWeight: '400 ! important',
+
+    '& > strong': {
+      fontSize: '16px !important',
+      fontWeight: '400 ! important',
+    },
+  },
 };
 
 const ctaItem = {
