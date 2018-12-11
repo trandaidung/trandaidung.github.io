@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[React]]></title><description><![CDATA[A JavaScript library for building user interfaces]]></description><link>https://reactjs.org</link><generator>RSS for Node</generator><lastBuildDate>Tue, 11 Dec 2018 08:55:03 GMT</lastBuildDate><item><title><![CDATA[Page Not Found]]></title><description><![CDATA[<p>We couldn’t find what you were looking for.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[React]]></title><description><![CDATA[A JavaScript library for building user interfaces]]></description><link>https://reactjs.org</link><generator>RSS for Node</generator><lastBuildDate>Tue, 11 Dec 2018 11:18:44 GMT</lastBuildDate><item><title><![CDATA[Page Not Found]]></title><description><![CDATA[<p>We couldn’t find what you were looking for.</p>
 <p>Please contact the owner of the site that linked you to the original URL and let them know their link is broken.</p>]]></description><link>https://reactjs.org404.html</link><guid isPermaLink="false">https://reactjs.org404.html</guid><pubDate>Invalid Date</pubDate></item><item><title><![CDATA[Component-Based]]></title><description><![CDATA[<p>Build encapsulated components that manage their own state, then compose them to make complex UIs.</p>
 <p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p>]]></description><link>https://reactjs.org/home/marketing/component-based.html</link><guid isPermaLink="false">https://reactjs.org/home/marketing/component-based.html</guid><pubDate>Invalid Date</pubDate></item><item><title><![CDATA[Declarative]]></title><description><![CDATA[<p>React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</p>
 <p>Declarative views make your code more predictable and easier to debug.</p>]]></description><link>https://reactjs.org/home/marketing/declarative.html</link><guid isPermaLink="false">https://reactjs.org/home/marketing/declarative.html</guid><pubDate>Invalid Date</pubDate></item><item><title><![CDATA[Learn Once, Write Anywhere]]></title><description><![CDATA[<p>We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.</p>
@@ -90,26 +90,57 @@
 <p>Seperate page with line:</p>
 <hr>
 <p>Break line
-<br></p>]]></description><link>https://reactjs.org/communication/2018/12/11/demo-content.html</link><guid isPermaLink="false">https://reactjs.org/communication/2018/12/11/demo-content.html</guid><pubDate>Mon, 10 Dec 2018 17:00:00 GMT</pubDate></item><item><title><![CDATA[Học Tiếng Anh "formal" hay "informal"]]></title><description><![CDATA[<p><strong>Về cơ bản, Tiếng Anh có hai loại văn phong:</strong></p>
-<p><strong>Văn phong Formal</strong> được sử dụng trong bối cảnh “nghiêm túc” như sách, báo, bài viết khoa học, thư từ với khách hàng, diễn văn,..Ngược lại, <strong>văn phong Informal</strong> được sử dụng trong đối thoại hằng ngày với gia đình, bạn bè.</p>
-<p>Để giúp các bạn hiểu rõ hơn, dưới đây là một vài ví dụ. Mỗi cặp câu có cùng một nội dung, nhưng văn phong khác nhau.</p>
-<p><em>Nói xin lỗi:</em></p>
-<blockquote>
+<br></p>]]></description><link>https://reactjs.org/communication/2018/12/11/demo-content.html</link><guid isPermaLink="false">https://reactjs.org/communication/2018/12/11/demo-content.html</guid><pubDate>Mon, 10 Dec 2018 17:00:00 GMT</pubDate></item><item><title><![CDATA[Nói về Gia đình: Bạn giống ai trong nhà?]]></title><description><![CDATA[<p><strong>Bạn có thể được hỏi: Who do you resemble in your family? Dưới đây mình sẽ liệt kê một số ví dụ thường gặp để trả lời câu hỏi đó. Hy vọng cách học này giúp các bạn cảm thấy dễ nhớ hơn!</strong></p>
+<p>Trước khi đưa ra ví dụ trả lời, mình sẽ giải thích câu hỏi <strong>Who do you resemble in your family?</strong></p>
 <ul>
-<li>Formal: <strong>I truly apologize for being late.</strong>(Giả sử bạn đến trễ một cuộc hẹn quan trọng với khách hàng).</li>
-<li>Informal: <strong>I’m sorry I’m late.</strong> (Giả sử bạn trễ hẹn cafe với nhóm bạn thân).</li>
+<li><strong>resemble somebody/something</strong>: to look like or be similar to another person or thing (giống, tương tự).</li>
+</ul>
+<p>Vì trong câu này, người hỏi không đề cập đến chính xác giống về tính cách hay ngoại hình, nên bạn có thể trả lời theo hướng nào cũng được.</p>
+<h3 id="1-giống-về-ngoại-hình-appearance"><a href="#1-gi%E1%BB%91ng-v%E1%BB%81-ngo%E1%BA%A1i-h%C3%ACnh-appearance" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Giống về ngoại hình (appearance)</h3>
+<p>Trước tiên, bạn có thể bắt đầu với <strong>giống ai</strong> trước, sau đó mới giải thích thêm <strong>giống như thế nào</strong> </p>
+<p>Để nói <code class="gatsby-code-text">Giống ai</code>, bạn có thể sử dụng:</p>
+<ul>
+<li>Động từ <strong>look like</strong> + somebody/someone (nhìn giống ai đó)</li>
+</ul>
+<p>Sau đó, bạn có thể mô tả chi tiết <code class="gatsby-code-text">giống như thế nào</code> với cấu trúc <strong>we both have</strong> (chúng tôi đều có) + tên bộ phận giống nhau như: </p>
+<ul>
+<li>Mũi thẳng: Straight nose</li>
+<li>Mắt xanh: Blue eyes</li>
+<li>Môi mỏng: Thin lips</li>
+<li>Gò má cao: High cheeks</li>
+</ul>
+<blockquote>
+<p>Ví dụ:</p>
+<ul>
+<li>I look like my mother. We both have dark hair and thin lips.</li>
+<li>I closely resemble my sister. Though she is two years older than me, everybody thinks that we are twins.</li>
 </ul>
 </blockquote>
-<p><em>Nhờ ai đó giúp đỡ:</em></p>
-<blockquote>
+<h3 id="2-giống-về-tính-cách-personality"><a href="#2-gi%E1%BB%91ng-v%E1%BB%81-t%C3%ADnh-c%C3%A1ch-personality" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Giống về tính cách (personality)</h3>
+<p>Tương tự như trên, bạn có thể nói về <code class="gatsby-code-text">giống ai</code> trước, sau đó nói <code class="gatsby-code-text">giống như thế nào</code> sau bằng một số cụm sau:</p>
 <ul>
-<li>Formal: <strong>I would highly appreciate if you could help me with my problem.</strong>(Giả sử bạn gửi mail đến Phòng Đào tạo của trường để nhờ giải quyết vấn đề học tập).</li>
-<li>Informal: <strong>Please help me!</strong> (Giả sử bạn đang nài nỉ bạn bố mẹ làm giúp gì đó).</li>
+<li><strong>Share similar interests</strong>: có cùng sở thích. </li>
+<li><strong>We both love/like/enjoy</strong> something (chúng tôi cùng yêu thích thứ gì)</li>
+<li><strong>Have the same taste</strong> IN something (có cùng gu trong việc gì đó)</li>
+<li><strong>We both are</strong> + tính từ thể hiện tính cách như: <strong>stubborn</strong> (cứng đầu), <strong>generous</strong> (hào phóng), <strong>sensitive</strong> (nhạy cảm), <strong>reliable</strong> (đáng tin cậy),..</li>
+</ul>
+<blockquote>
+<p>Ví dụ:</p>
+<ul>
+<li>My grandfather and I share similar interests. We both love reading documentaries about war and watching news on TV in our spare time.</li>
+<li>I closely resemble my mother. We have the same taste in music and clothes. Besides, we are both sensitive.</li>
 </ul>
 </blockquote>
-<h3 id="vậy-người-học-tiếng-anh-nên-chọn-học-văn-phong-nào"><a href="#v%E1%BA%ADy-ng%C6%B0%E1%BB%9Di-h%E1%BB%8Dc-ti%E1%BA%BFng-anh-n%C3%AAn-ch%E1%BB%8Dn-h%E1%BB%8Dc-v%C4%83n-phong-n%C3%A0o" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vậy, người học tiếng Anh nên chọn học văn phong nào?</h3>
-<p>Câu trả lời của mình là tuỳ. </p>
-<p>Việc lựa chọn này dựa vào mục tiêu ban đầu của bạn. Nếu bạn muốn sử dụng tiếng Anh trong công sở, bạn sẽ cần gửi mail cho khách hàng, hay viết báo cáo gửi sếp, lúc này văn phong Formal là rất cần thiết. </p>
-<p>Nhưng nếu mục đích của bạn là sử dụng thành thạo tiếng Anh để nói chuyện, tán gẫu với người nước ngoài, bạn nên ưu tiên văn phong Informal hơn. Trong những tình huống như vậy, việc sử dụng từ vựng, ngữ pháp trịnh trọng sẽ khiến Tiếng Anh của bạn mất tự nhiên.</p>
-<p>Riêng đối với các bạn muốn ra nước ngoài du học, bạn cần sử dụng thành thạo cả hai loại mới được. Vì bạn vừa phải viết báo cáo, nghiên cứu, thuyết trình trên trường, vừa phải như giao tiếp thường ngày khi nói chuyện với bạn bè, hay đi mua đồ ở tạp hoá.</p>
-<p>Hy vọng bài viết của mình có ích. :) </p>]]></description><link>https://reactjs.org/communication/2018/12/10/new.html</link><guid isPermaLink="false">https://reactjs.org/communication/2018/12/10/new.html</guid><pubDate>Sun, 09 Dec 2018 17:00:00 GMT</pubDate></item></channel></rss>
+<h3 id="3-không-giống-ai"><a href="#3-kh%C3%B4ng-gi%E1%BB%91ng-ai" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Không giống ai</h3>
+<p>Trong trường hợp này, bạn có thể nói như sau:</p>
+<ul>
+<li><strong>We are/look different</strong>: chúng tôi nhìn khác nhau</li>
+<li><strong>There is no resemblance</strong> between/among us: không có sự giống nhau nào giữa chúng tôi cả
+(Lưu ý: Between dùng cho 2 người, trong khi Among dùng cho 2 người trở lên).</li>
+</ul>
+<blockquote>
+<ul>
+<li>My family are all so different. None of us really look like each other.</li>
+<li>There is no resemblance among our family.</li>
+</ul>
+</blockquote>]]></description><link>https://reactjs.org/vocabulary/2018/12/11/family.html</link><guid isPermaLink="false">https://reactjs.org/vocabulary/2018/12/11/family.html</guid><pubDate>Mon, 10 Dec 2018 17:00:00 GMT</pubDate></item></channel></rss>
