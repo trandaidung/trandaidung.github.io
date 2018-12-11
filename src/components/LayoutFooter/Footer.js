@@ -73,6 +73,7 @@ const footerContainer = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
+  justifyContent: 'space-between',
 };
 
 const footerWithSideBar = {
@@ -104,6 +105,7 @@ const footerWithoutSideBar = {
 const footerWrapper = {
   flexWrap: 'wrap',
   display: 'flex',
+  flex: 1,
 
   [media.lessThan('large')]: {
     width: '100%',

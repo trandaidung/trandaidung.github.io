@@ -21,7 +21,7 @@ const FooterNav = ({children, title, layoutHasSidebar = false}: Props) => (
     css={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       width: '50%',
       paddingTop: 40,
 
