@@ -5,11 +5,6 @@
  * @flow
  */
 
-export type Author = {
-  name: string,
-  url: string,
-};
-
 export type Node = {
   excerpt: string,
   fields: {
@@ -19,7 +14,6 @@ export type Node = {
     slug: string,
   },
   frontmatter: {
-    author?: Array<Author>,
     next?: string,
     prev?: string,
     title: string,

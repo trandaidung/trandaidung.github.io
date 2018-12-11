@@ -13,7 +13,6 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import React from 'react';
 import {urlRoot} from 'site-constants';
 import {colors, media, sharedStyles} from 'theme';
-import toCommaSeparatedList from 'utils/toCommaSeparatedList';
 import MetaTitle from 'templates/components/MetaTitle';
 
 import type {allMarkdownRemarkData} from 'types';
@@ -78,20 +77,6 @@ const AllBlogPosts = ({data, location, blogType}: Props) => (
                   </Link>
                 </h2>
                 <MetaTitle>{node.fields.date}</MetaTitle>
-                {node.frontmatter.author ? (
-                  <div
-                    css={{
-                      color: colors.subtle,
-                      marginTop: -5,
-                    }}>
-                    by{' '}
-                    {toCommaSeparatedList(node.frontmatter.author, author => (
-                      <span key={author.frontmatter.name}>
-                        {author.frontmatter.name}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
               </li>
             ))}
           </ul>
