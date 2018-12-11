@@ -8,7 +8,7 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-const defaultDescription = 'A JavaScript library for building user interfaces';
+const defaultDescription = 'A blog to share some interests about English.';
 
 type Props = {
   title: string,
@@ -27,7 +27,7 @@ const TitleAndMetaTags = ({title, ogDescription, ogUrl}: Props) => {
         property="og:description"
         content={ogDescription || defaultDescription}
       />
-      <meta property="fb:app_id" content="623268441017527" />
+      {/* <meta property="fb:app_id" content="623268441017527" /> */}
     </Helmet>
   );
 };
