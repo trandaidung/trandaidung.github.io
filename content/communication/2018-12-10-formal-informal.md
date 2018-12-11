@@ -1,7 +1,7 @@
 ---
 title: 'Học Tiếng Anh "formal" hay "informal"'
-author: [gaearon]
 ---
+
 **Về cơ bản, Tiếng Anh có hai loại văn phong:**
 
 **Văn phong Formal** được sử dụng trong bối cảnh "nghiêm túc" như sách, báo, bài viết khoa học, thư từ với khách hàng, diễn văn,..Ngược lại, **văn phong Informal** được sử dụng trong đối thoại hằng ngày với gia đình, bạn bè.
