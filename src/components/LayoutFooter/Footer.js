@@ -44,8 +44,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
           <section css={[footerLogo, logoStyle]}>
             <a
               css={[logoWrapper]}
-              href="https://code.facebook.com/projects/"
-              target="_blank"
+              href="/"
               rel="noopener">
               <img alt="an" css={[logoImg]} src={ossLogoPng} />
               <span css={[logoText]}>an</span>
