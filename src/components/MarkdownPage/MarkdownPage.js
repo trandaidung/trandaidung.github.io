@@ -13,10 +13,11 @@ import React from 'react';
 import StickyResponsiveSidebar from 'components/StickyResponsiveSidebar';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import findSectionForPath from 'utils/findSectionForPath';
-import {sharedStyles} from 'theme';
+import { sharedStyles } from 'theme';
 import createOgUrl from 'utils/createOgUrl';
-
-import type {Node} from 'types';
+import axios from 'axios';
+import { slackWebHook } from 'site-constants';
+import type { Node } from 'types';
 
 type Props = {
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
@@ -27,6 +28,10 @@ type Props = {
   markdownRemark: Node,
   sectionList: Array<Object>, // TODO: Add better flow type once we have the Section component
   titlePostfix: string,
+};
+
+const options = {
+  text: "Message from slack bot!!",
 };
 
 const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
@@ -41,87 +46,106 @@ const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
   return flattenedSectionItems.find(item => item.id === linkId);
 };
 
-const MarkdownPage = ({
-  createLink,
-  date,
-  enableScrollSync,
-  ogDescription,
-  location,
-  markdownRemark,
-  sectionList,
-  titlePostfix = '',
-}: Props) => {
-  const titlePrefix = markdownRemark.frontmatter.title || '';
+class MarkdownPage extends React.Component<Props> {
+  like() {
+    axios.post(slackWebHook, JSON.stringify(options))
+      .then((response) => {
+        console.log('SUCCEEDED: Sent slack webhook: \n', response.data);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        console.log('FAILED: Send slack webhook', error);
+        reject(new Error('FAILED: Send slack webhook'));
+      })
+  }
 
-  const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
-  const next = getPageById(sectionList, markdownRemark.frontmatter.next);
+  render() {
+    const {
+      createLink,
+      date,
+      enableScrollSync,
+      ogDescription,
+      location,
+      markdownRemark,
+      sectionList,
+      titlePostfix = '',
+    } = this.props
 
-  return (
-    <Flex
-      direction="column"
-      grow="1"
-      shrink="0"
-      halign="stretch"
-      css={{
-        width: '100%',
-        flex: '1 0 auto',
-        position: 'relative',
-        zIndex: 0,
-      }}>
-      <TitleAndMetaTags
-        ogDescription={ogDescription}
-        ogUrl={createOgUrl(markdownRemark.fields.slug)}
-        title={`${titlePrefix}${titlePostfix}`}
-      />
-      <div css={{flex: '1 0 auto'}}>
-        <Container>
-          <div css={sharedStyles.articleLayout.container}>
-            <Flex type="article" direction="column" grow="1" halign="stretch">
-              <MarkdownHeader title={titlePrefix} />
+    const titlePrefix = markdownRemark.frontmatter.title || '';
 
-              {date && <div css={{marginTop: 15}}>{date} </div>}
+    const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
+    const next = getPageById(sectionList, markdownRemark.frontmatter.next);
 
-              <div css={sharedStyles.articleLayout.content}>
-                <div
-                  css={[sharedStyles.markdown]}
-                  dangerouslySetInnerHTML={{__html: markdownRemark.html}}
+    return (
+      <Flex
+        direction="column"
+        grow="1"
+        shrink="0"
+        halign="stretch"
+        css={{
+          width: '100%',
+          flex: '1 0 auto',
+          position: 'relative',
+          zIndex: 0,
+        }}>
+        <TitleAndMetaTags
+          ogDescription={ogDescription}
+          ogUrl={createOgUrl(markdownRemark.fields.slug)}
+          title={`${titlePrefix}${titlePostfix}`}
+        />
+        <div css={{ flex: '1 0 auto' }}>
+          <Container>
+            <div css={sharedStyles.articleLayout.container}>
+              <Flex type="article" direction="column" grow="1" halign="stretch">
+                <MarkdownHeader title={titlePrefix} />
+
+                {date && <div css={{ marginTop: 15 }}>{date} </div>}
+
+                <div css={sharedStyles.articleLayout.content}>
+                  <div
+                    css={[sharedStyles.markdown]}
+                    dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
+                  />
+
+                  {markdownRemark.fields.path && (
+                    <button 
+                      css={[{ marginTop: 80 }, sharedStyles.articleLayout.editLink]}
+                      onClick={() => this.like()}>
+                      {/* <a
+                        css={sharedStyles.articleLayout.editLink}
+                        href={`https://github.com/reactjs/reactjs.org/tree/master/${
+                          markdownRemark.fields.path
+                          }`}>
+                        Edit this page
+                      </a> */}
+                      Bạn thấy bài viết này hữu ích?
+                    </button>
+                  )}
+                </div>
+              </Flex>
+
+              <div css={sharedStyles.articleLayout.sidebar}>
+                <StickyResponsiveSidebar
+                  enableScrollSync={enableScrollSync}
+                  createLink={createLink}
+                  defaultActiveSection={findSectionForPath(
+                    location.pathname,
+                    sectionList,
+                  )}
+                  location={location}
+                  sectionList={sectionList}
                 />
-
-                {markdownRemark.fields.path && (
-                  <div css={{marginTop: 80}}>
-                    <a
-                      css={sharedStyles.articleLayout.editLink}
-                      href={`https://github.com/reactjs/reactjs.org/tree/master/${
-                        markdownRemark.fields.path
-                      }`}>
-                      Edit this page
-                    </a>
-                  </div>
-                )}
               </div>
-            </Flex>
-
-            <div css={sharedStyles.articleLayout.sidebar}>
-              <StickyResponsiveSidebar
-                enableScrollSync={enableScrollSync}
-                createLink={createLink}
-                defaultActiveSection={findSectionForPath(
-                  location.pathname,
-                  sectionList,
-                )}
-                location={location}
-                sectionList={sectionList}
-              />
             </div>
-          </div>
-        </Container>
-      </div>
+          </Container>
+        </div>
 
-      {(next || prev) && (
-        <NavigationFooter location={location} next={next} prev={prev} />
-      )}
-    </Flex>
-  );
+        {(next || prev) && (
+          <NavigationFooter location={location} next={next} prev={prev} />
+        )}
+      </Flex>
+    );
+  }
 };
 
 export default MarkdownPage;
