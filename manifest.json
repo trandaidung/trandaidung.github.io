@@ -1,5 +1,6 @@
 {
   "main.js": "render-page.js",
   "main.js.map": "render-page.js.map",
+  "static/about.jpg": "static/about-f2ffcccf76c097207be118ae10a123de.jpg",
   "static/book_lover.svg": "static/book_lover-3ae4213647ad07a46902538e3acc503d.svg"
 }
