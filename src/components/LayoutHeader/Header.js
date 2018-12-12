@@ -103,8 +103,7 @@ class Header extends React.Component<Props, State> {
               <div css={[channelNav]}>
                 <a
                   css={[channelItem]}
-                  href="https://github.com/facebook/react/"
-                  target="_blank"
+                  href="/about/"
                   rel="noopener">
                   About me
                 </a>

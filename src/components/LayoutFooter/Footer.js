@@ -32,7 +32,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
             </FooterNav>
             <FooterNav layoutHasSidebar={layoutHasSidebar}>
               <MetaTitle onDark={true}>Others</MetaTitle>
-              <FooterLink to="/grammar/">About me</FooterLink>
+              <FooterLink to="/about/">About me</FooterLink>
               <ExternalFooterLink
                 href="https://www.facebook.com/react"
                 target="_blank"
