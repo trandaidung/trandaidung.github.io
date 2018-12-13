@@ -18,6 +18,7 @@ import createOgUrl from 'utils/createOgUrl';
 import axios from 'axios';
 import { slackWebHook } from 'site-constants';
 import type { Node } from 'types';
+import { colors } from 'theme';
 
 type Props = {
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
@@ -108,18 +109,13 @@ class MarkdownPage extends React.Component<Props> {
                   />
 
                   {markdownRemark.fields.path && (
-                    <button 
-                      css={[{ marginTop: 80 }, sharedStyles.articleLayout.editLink]}
-                      onClick={() => this.like()}>
-                      {/* <a
-                        css={sharedStyles.articleLayout.editLink}
-                        href={`https://github.com/reactjs/reactjs.org/tree/master/${
-                          markdownRemark.fields.path
-                          }`}>
-                        Edit this page
-                      </a> */}
-                      Bạn thấy bài viết này hữu ích?
-                    </button>
+                    <div css={{ marginTop: 80 }}>
+                      <span css={[helpfulMsg]}>Bạn thấy bài viết này hữu ích?</span>
+                      <i css={[likeBtn]}
+                        className="far fa-thumbs-up"
+                        onClick={() => this.like()} 
+                      />
+                    </div>
                   )}
                 </div>
               </Flex>
@@ -147,5 +143,29 @@ class MarkdownPage extends React.Component<Props> {
     );
   }
 };
+
+const helpfulMsg = {
+  color: colors.subtle,
+  borderColor: colors.divider,
+  transition: 'all 0.2s ease',
+  transitionPropery: 'color, border-color',
+  whiteSpace: 'nowrap',
+  borderBottomWidth: 1,
+  borderBottomStyle: 'solid',
+}
+
+const likeBtn = {
+  fontSize: 30,
+  marginLeft: 10,
+  color: colors.brand,
+  opacity: 0.7,
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  transitionPropery: 'opacity',
+
+  ':hover': {
+    opacity: 1,
+  }
+}
 
 export default MarkdownPage;
