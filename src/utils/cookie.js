@@ -9,11 +9,11 @@ export const setCookie = (cname: string, cvalue: string, exdays: number) => {
 };
 
 export const getCookie = (cname: string) => {
-  if (typeof document !== "undefined") {
+  if (typeof document !== 'undefined') {
     const name = cname + '=';
     const decodedCookie = decodeURIComponent(document.cookie);
     const ca = decodedCookie.split(';');
-  
+
     for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
       while (c.charAt(0) == ' ') {
