@@ -42,10 +42,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => {
             </FooterNav>
           </div>
           <section css={[footerLogo, logoStyle]}>
-            <a
-              css={[logoWrapper]}
-              href="/"
-              rel="noopener">
+            <a css={[logoWrapper]} href="/" rel="noopener">
               <img alt="an" css={[logoImg]} src={ossLogoPng} />
               <span css={[logoText]}>an</span>
             </a>

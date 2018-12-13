@@ -13,12 +13,14 @@ import React from 'react';
 import StickyResponsiveSidebar from 'components/StickyResponsiveSidebar';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import findSectionForPath from 'utils/findSectionForPath';
-import { sharedStyles } from 'theme';
+import {sharedStyles} from 'theme';
 import createOgUrl from 'utils/createOgUrl';
+// $FlowFixMe
 import axios from 'axios';
-import { slackWebHook } from 'site-constants';
-import type { Node } from 'types';
-import { colors } from 'theme';
+import {slackWebHook} from 'site-constants';
+import type {Node} from 'types';
+import {colors} from 'theme';
+import {setCookie, getCookie} from 'utils/cookie';
 
 type Props = {
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
@@ -31,8 +33,8 @@ type Props = {
   titlePostfix: string,
 };
 
-const options = {
-  text: "Message from slack bot!!",
+type State = {
+  liked: boolean,
 };
 
 const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
@@ -47,17 +49,65 @@ const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
   return flattenedSectionItems.find(item => item.id === linkId);
 };
 
-class MarkdownPage extends React.Component<Props> {
+class MarkdownPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      liked: getCookie(`liked-${this.props.location.pathname}`) === 'liked',
+    };
+  }
+
   like() {
-    axios.post(slackWebHook, JSON.stringify(options))
-      .then((response) => {
-        console.log('SUCCEEDED: Sent slack webhook: \n', response.data);
-        resolve(response.data);
+    const {location, markdownRemark} = this.props;
+
+    axios
+      .post(
+        slackWebHook,
+        JSON.stringify({
+          attachments: [
+            {
+              title: markdownRemark.frontmatter.title || '',
+              title_link: `https://iaman.cf${location.pathname}`,
+              color: 'good',
+              text: '*Yayyy!!* 1 person has just `like` your post.',
+            },
+          ],
+        }),
+      )
+      .then(response => {
+        setCookie(`liked-${location.pathname}`, 'liked', 365);
+        this.setState({liked: true});
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('FAILED: Send slack webhook', error);
-        reject(new Error('FAILED: Send slack webhook'));
+      });
+  }
+
+  unlike() {
+    const {location, markdownRemark} = this.props;
+
+    axios
+      .post(
+        slackWebHook,
+        JSON.stringify({
+          attachments: [
+            {
+              title: markdownRemark.frontmatter.title || '',
+              title_link: `https://iaman.cf${location.pathname}`,
+              color: 'danger',
+              text: '*Ooops!!* 1 person has just `unlike` your post.',
+            },
+          ],
+        }),
+      )
+      .then(response => {
+        setCookie(`liked-${location.pathname}`, 'liked', 0);
+        this.setState({liked: false});
       })
+      .catch(error => {
+        console.log('FAILED: Send slack webhook', error);
+      });
   }
 
   render() {
@@ -70,7 +120,8 @@ class MarkdownPage extends React.Component<Props> {
       markdownRemark,
       sectionList,
       titlePostfix = '',
-    } = this.props
+    } = this.props;
+    const {liked} = this.state;
 
     const titlePrefix = markdownRemark.frontmatter.title || '';
 
@@ -94,26 +145,29 @@ class MarkdownPage extends React.Component<Props> {
           ogUrl={createOgUrl(markdownRemark.fields.slug)}
           title={`${titlePrefix}${titlePostfix}`}
         />
-        <div css={{ flex: '1 0 auto' }}>
+        <div css={{flex: '1 0 auto'}}>
           <Container>
             <div css={sharedStyles.articleLayout.container}>
               <Flex type="article" direction="column" grow="1" halign="stretch">
                 <MarkdownHeader title={titlePrefix} />
 
-                {date && <div css={{ marginTop: 15 }}>{date} </div>}
+                {date && <div css={{marginTop: 15}}>{date} </div>}
 
                 <div css={sharedStyles.articleLayout.content}>
                   <div
                     css={[sharedStyles.markdown]}
-                    dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
+                    dangerouslySetInnerHTML={{__html: markdownRemark.html}}
                   />
 
                   {markdownRemark.fields.path && (
-                    <div css={{ marginTop: 80 }}>
-                      <span css={[helpfulMsg]}>Bạn thấy bài viết này hữu ích?</span>
-                      <i css={[likeBtn]}
-                        className="far fa-thumbs-up"
-                        onClick={() => this.like()} 
+                    <div css={{marginTop: 80}}>
+                      <span css={[helpfulMsg]}>
+                        Bạn thấy bài viết này hữu ích?
+                      </span>
+                      <i
+                        css={[likeBtn]}
+                        className={`${liked ? 'fas' : 'far'} fa-thumbs-up`}
+                        onClick={() => (liked ? this.unlike() : this.like())}
                       />
                     </div>
                   )}
@@ -142,7 +196,7 @@ class MarkdownPage extends React.Component<Props> {
       </Flex>
     );
   }
-};
+}
 
 const helpfulMsg = {
   color: colors.subtle,
@@ -152,7 +206,7 @@ const helpfulMsg = {
   whiteSpace: 'nowrap',
   borderBottomWidth: 1,
   borderBottomStyle: 'solid',
-}
+};
 
 const likeBtn = {
   fontSize: 30,
@@ -165,7 +219,7 @@ const likeBtn = {
 
   ':hover': {
     opacity: 1,
-  }
-}
+  },
+};
 
 export default MarkdownPage;
