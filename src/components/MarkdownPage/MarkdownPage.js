@@ -61,6 +61,7 @@ class MarkdownPage extends React.Component<Props, State> {
   like() {
     const {location, markdownRemark} = this.props;
 
+    this.setState({liked: true});
     axios
       .post(
         slackWebHook,
@@ -77,7 +78,6 @@ class MarkdownPage extends React.Component<Props, State> {
       )
       .then(response => {
         setCookie(`liked-${location.pathname}`, 'liked', 365);
-        this.setState({liked: true});
       })
       .catch(error => {
         console.log('FAILED: Send slack webhook', error);
@@ -87,6 +87,7 @@ class MarkdownPage extends React.Component<Props, State> {
   unlike() {
     const {location, markdownRemark} = this.props;
 
+    this.setState({liked: false});
     axios
       .post(
         slackWebHook,
@@ -103,7 +104,6 @@ class MarkdownPage extends React.Component<Props, State> {
       )
       .then(response => {
         setCookie(`liked-${location.pathname}`, 'liked', 0);
-        this.setState({liked: false});
       })
       .catch(error => {
         console.log('FAILED: Send slack webhook', error);
