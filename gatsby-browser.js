@@ -9,6 +9,7 @@
 // Import global styles
 require('normalize.css');
 require('./src/css/reset.css');
+require('./src/css/font-awesome.css');
 require('./src/prism-styles');
 
 // A stub function is needed because gatsby won't load this file otherwise

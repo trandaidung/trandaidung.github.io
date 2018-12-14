@@ -15,8 +15,12 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import findSectionForPath from 'utils/findSectionForPath';
 import {sharedStyles} from 'theme';
 import createOgUrl from 'utils/createOgUrl';
-
+// $FlowFixMe
+import axios from 'axios';
+import {slackWebHook} from 'site-constants';
 import type {Node} from 'types';
+import {colors} from 'theme';
+import {setCookie, getCookie} from 'utils/cookie';
 
 type Props = {
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
@@ -27,6 +31,10 @@ type Props = {
   markdownRemark: Node,
   sectionList: Array<Object>, // TODO: Add better flow type once we have the Section component
   titlePostfix: string,
+};
+
+type State = {
+  liked: boolean,
 };
 
 const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
@@ -41,87 +49,177 @@ const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
   return flattenedSectionItems.find(item => item.id === linkId);
 };
 
-const MarkdownPage = ({
-  createLink,
-  date,
-  enableScrollSync,
-  ogDescription,
-  location,
-  markdownRemark,
-  sectionList,
-  titlePostfix = '',
-}: Props) => {
-  const titlePrefix = markdownRemark.frontmatter.title || '';
+class MarkdownPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
-  const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
-  const next = getPageById(sectionList, markdownRemark.frontmatter.next);
+    this.state = {
+      liked: getCookie(`liked-${this.props.location.pathname}`) === 'liked',
+    };
+  }
 
-  return (
-    <Flex
-      direction="column"
-      grow="1"
-      shrink="0"
-      halign="stretch"
-      css={{
-        width: '100%',
-        flex: '1 0 auto',
-        position: 'relative',
-        zIndex: 0,
-      }}>
-      <TitleAndMetaTags
-        ogDescription={ogDescription}
-        ogUrl={createOgUrl(markdownRemark.fields.slug)}
-        title={`${titlePrefix}${titlePostfix}`}
-      />
-      <div css={{flex: '1 0 auto'}}>
-        <Container>
-          <div css={sharedStyles.articleLayout.container}>
-            <Flex type="article" direction="column" grow="1" halign="stretch">
-              <MarkdownHeader title={titlePrefix} />
+  like() {
+    const {location, markdownRemark} = this.props;
 
-              {date && <div css={{marginTop: 15}}>{date} </div>}
+    axios
+      .post(
+        slackWebHook,
+        JSON.stringify({
+          attachments: [
+            {
+              title: markdownRemark.frontmatter.title || '',
+              title_link: `https://iaman.cf${location.pathname}`,
+              color: 'good',
+              text: '*Yayyy!!* 1 person has just `like` your post.',
+            },
+          ],
+        }),
+      )
+      .then(response => {
+        setCookie(`liked-${location.pathname}`, 'liked', 365);
+        this.setState({liked: true});
+      })
+      .catch(error => {
+        console.log('FAILED: Send slack webhook', error);
+      });
+  }
 
-              <div css={sharedStyles.articleLayout.content}>
-                <div
-                  css={[sharedStyles.markdown]}
-                  dangerouslySetInnerHTML={{__html: markdownRemark.html}}
+  unlike() {
+    const {location, markdownRemark} = this.props;
+
+    axios
+      .post(
+        slackWebHook,
+        JSON.stringify({
+          attachments: [
+            {
+              title: markdownRemark.frontmatter.title || '',
+              title_link: `https://iaman.cf${location.pathname}`,
+              color: 'danger',
+              text: '*Ooops!!* 1 person has just `unlike` your post.',
+            },
+          ],
+        }),
+      )
+      .then(response => {
+        setCookie(`liked-${location.pathname}`, 'liked', 0);
+        this.setState({liked: false});
+      })
+      .catch(error => {
+        console.log('FAILED: Send slack webhook', error);
+      });
+  }
+
+  render() {
+    const {
+      createLink,
+      date,
+      enableScrollSync,
+      ogDescription,
+      location,
+      markdownRemark,
+      sectionList,
+      titlePostfix = '',
+    } = this.props;
+    const {liked} = this.state;
+
+    const titlePrefix = markdownRemark.frontmatter.title || '';
+
+    const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
+    const next = getPageById(sectionList, markdownRemark.frontmatter.next);
+
+    return (
+      <Flex
+        direction="column"
+        grow="1"
+        shrink="0"
+        halign="stretch"
+        css={{
+          width: '100%',
+          flex: '1 0 auto',
+          position: 'relative',
+          zIndex: 0,
+        }}>
+        <TitleAndMetaTags
+          ogDescription={ogDescription}
+          ogUrl={createOgUrl(markdownRemark.fields.slug)}
+          title={`${titlePrefix}${titlePostfix}`}
+        />
+        <div css={{flex: '1 0 auto'}}>
+          <Container>
+            <div css={sharedStyles.articleLayout.container}>
+              <Flex type="article" direction="column" grow="1" halign="stretch">
+                <MarkdownHeader title={titlePrefix} />
+
+                {date && <div css={{marginTop: 15}}>{date} </div>}
+
+                <div css={sharedStyles.articleLayout.content}>
+                  <div
+                    css={[sharedStyles.markdown]}
+                    dangerouslySetInnerHTML={{__html: markdownRemark.html}}
+                  />
+
+                  {markdownRemark.fields.path && (
+                    <div css={{marginTop: 80}}>
+                      <span css={[helpfulMsg]}>
+                        Bạn thấy bài viết này hữu ích?
+                      </span>
+                      <i
+                        css={[likeBtn]}
+                        className={`${liked ? 'fas' : 'far'} fa-thumbs-up`}
+                        onClick={() => (liked ? this.unlike() : this.like())}
+                      />
+                    </div>
+                  )}
+                </div>
+              </Flex>
+
+              <div css={sharedStyles.articleLayout.sidebar}>
+                <StickyResponsiveSidebar
+                  enableScrollSync={enableScrollSync}
+                  createLink={createLink}
+                  defaultActiveSection={findSectionForPath(
+                    location.pathname,
+                    sectionList,
+                  )}
+                  location={location}
+                  sectionList={sectionList}
                 />
-
-                {markdownRemark.fields.path && (
-                  <div css={{marginTop: 80}}>
-                    <a
-                      css={sharedStyles.articleLayout.editLink}
-                      href={`https://github.com/reactjs/reactjs.org/tree/master/${
-                        markdownRemark.fields.path
-                      }`}>
-                      Edit this page
-                    </a>
-                  </div>
-                )}
               </div>
-            </Flex>
-
-            <div css={sharedStyles.articleLayout.sidebar}>
-              <StickyResponsiveSidebar
-                enableScrollSync={enableScrollSync}
-                createLink={createLink}
-                defaultActiveSection={findSectionForPath(
-                  location.pathname,
-                  sectionList,
-                )}
-                location={location}
-                sectionList={sectionList}
-              />
             </div>
-          </div>
-        </Container>
-      </div>
+          </Container>
+        </div>
 
-      {(next || prev) && (
-        <NavigationFooter location={location} next={next} prev={prev} />
-      )}
-    </Flex>
-  );
+        {(next || prev) && (
+          <NavigationFooter location={location} next={next} prev={prev} />
+        )}
+      </Flex>
+    );
+  }
+}
+
+const helpfulMsg = {
+  color: colors.subtle,
+  borderColor: colors.divider,
+  transition: 'all 0.2s ease',
+  transitionPropery: 'color, border-color',
+  whiteSpace: 'nowrap',
+  borderBottomWidth: 1,
+  borderBottomStyle: 'solid',
+};
+
+const likeBtn = {
+  fontSize: 30,
+  marginLeft: 10,
+  color: colors.brand,
+  opacity: 0.7,
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  transitionPropery: 'opacity',
+
+  ':hover': {
+    opacity: 1,
+  },
 };
 
 export default MarkdownPage;

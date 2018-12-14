@@ -101,10 +101,7 @@ class Header extends React.Component<Props, State> {
               </nav>
 
               <div css={[channelNav]}>
-                <a
-                  css={[channelItem]}
-                  href="/about/"
-                  rel="noopener">
+                <a css={[channelItem]} href="/about/" rel="noopener">
                   About me
                 </a>
                 <a
