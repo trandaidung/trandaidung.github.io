@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{193:function(a,n,t){"use strict";t.r(n),function(a){t.d(n,"pageQuery",function(){return e});t(0);var o=t(229),e="2480082919";n.default=function(n){var t=n.data,e=n.location;return a.createElement(o.a,{blogType:"vocabulary",data:t,location:e})}}.call(this,t(58))}}]);
-//# sourceMappingURL=component---src-pages-vocabulary-all-html-js-c80571674006c9b711e6.js.map

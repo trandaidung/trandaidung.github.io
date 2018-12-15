@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{191:function(a,n,t){"use strict";t.r(n),function(a){t.d(n,"pageQuery",function(){return o});t(0);var e=t(232),o="1715759938";n.default=function(n){var t=n.data,o=n.location;return a.createElement(e.a,{blogType:"grammar",data:t,location:o})}}.call(this,t(58))}}]);
-//# sourceMappingURL=component---src-pages-grammar-all-html-js-8213ff81cba24a32464d.js.map
