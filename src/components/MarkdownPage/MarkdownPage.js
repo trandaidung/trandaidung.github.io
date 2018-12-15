@@ -69,7 +69,7 @@ class MarkdownPage extends React.Component<Props, State> {
           attachments: [
             {
               title: markdownRemark.frontmatter.title || '',
-              title_link: `https://thaoanvo.com${location.pathname}`,
+              title_link: `https://www.thaoanvo.com${location.pathname}`,
               color: 'good',
               text: '*Yayyy!!* 1 person has just `like` your post.',
             },
@@ -95,7 +95,7 @@ class MarkdownPage extends React.Component<Props, State> {
           attachments: [
             {
               title: markdownRemark.frontmatter.title || '',
-              title_link: `https://thaoanvo.com${location.pathname}`,
+              title_link: `https://www.thaoanvo.com${location.pathname}`,
               color: 'danger',
               text: '*Ooops!!* 1 person has just `unlike` your post.',
             },
