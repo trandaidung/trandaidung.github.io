@@ -182,7 +182,7 @@ const sharedStyles = {
   },
 
   markdown: {
-    lineHeight: '25px',
+    lineHeight: '29px',
 
     '& .gatsby-highlight': {
       marginTop: 25,
@@ -217,7 +217,7 @@ const sharedStyles = {
 
     '& p': {
       marginTop: 30,
-      fontSize: 17,
+      fontSize: 20,
       lineHeight: 1.7,
       maxWidth: '42em',
 
@@ -335,7 +335,7 @@ const sharedStyles = {
 
     '& ol, & ul': {
       marginTop: 20,
-      fontSize: 16,
+      fontSize: 19,
       color: colors.text,
       paddingLeft: 20,
 
@@ -346,7 +346,7 @@ const sharedStyles = {
       },
 
       '& li': {
-        marginTop: 10,
+        marginTop: 17,
       },
 
       '& li.button-newapp': {
@@ -404,6 +404,11 @@ const sharedStyles = {
     '& .gatsby-highlight + blockquote': {
       marginTop: 40,
     },
+
+    '& strong strong': {
+      textDecoration: 'underline',
+      fontWeight: 'unset',
+    }
   },
 };
 
