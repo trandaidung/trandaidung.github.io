@@ -61,7 +61,7 @@ class CodeEditor extends Component {
           <br />
           <br />
           This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
+          adding thaoanvo.com to the whitelist so the live code examples will
           work.
         </span>
       );

@@ -9,7 +9,7 @@
 module.exports = {
   siteMetadata: {
     title: 'An: Blog học tiếng Anh.',
-    siteUrl: 'https://iaman.cf',
+    siteUrl: 'https://thaoanvo.com',
     rssFeedTitle: 'An',
     rssFeedDescription: 'Blog học tiếng Anh.',
   },
