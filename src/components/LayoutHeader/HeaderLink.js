@@ -26,7 +26,7 @@ const style = {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  color: colors.dark,
+  color: colors.darkBlue,
   transition: 'color 0.2s ease-out',
   paddingLeft: 15,
   paddingRight: 15,

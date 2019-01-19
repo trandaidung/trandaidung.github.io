@@ -96,7 +96,7 @@ class CodeEditor extends Component {
             <div
               css={{
                 padding: '0px 10px',
-                background: colors.darker,
+                background: colors.yellow,
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>

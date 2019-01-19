@@ -118,7 +118,7 @@ const layoutWrapper = {
 
 const header = {
   backgroundColor: colors.white,
-  color: colors.dark,
+  color: colors.darkBlue,
 };
 
 const bannerContainer = {

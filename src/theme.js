@@ -12,12 +12,12 @@
 import hex2rgba from 'hex2rgba';
 
 const colors = {
-  lighter: '#373940', // light blue
-  dark: '#282c34', // dark blue
-  darker: '#fccd04', // really dark blue
-  bgHeader: 'rgba(252, 205, 4, .75)', // really dark blue
-  brand: '#540CFA', // electric blue
-  brander: '#343161',
+  lightGrey: '#373940', // light Grey
+  darkBlue: '#282c34', // dark blue
+  yellow: '#fccd04', // yellow
+  yellowLight: 'rgba(252, 205, 4, .75)', // really light yellow
+  brand: '#540CFA', // purple
+  brander: '#343161', // darker purple
   brandLight: '#bbeffd',
   text: '#1a1a1a', // very dark grey / black substitute
   subtle: '#6d6d6d', // light grey for text

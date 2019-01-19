@@ -12,7 +12,7 @@ const prismColors = {
   char: '#D8DEE9',
   comment: '#B2B2B2',
   keyword: '#c5a5c5',
-  lineHighlight: '#353b45', // colors.dark + extra lightness
+  lineHighlight: '#353b45', // colors.darkBlue + extra lightness
   primitive: '#5a9bcf',
   string: '#8dc891',
   variable: '#d7deea',
@@ -26,7 +26,7 @@ const prismColors = {
 };
 
 css.global('.gatsby-highlight', {
-  background: colors.dark,
+  background: colors.darkBlue,
   color: colors.white,
   borderRadius: 10,
   overflow: 'auto',

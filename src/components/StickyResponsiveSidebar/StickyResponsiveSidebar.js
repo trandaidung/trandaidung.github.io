@@ -140,7 +140,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
         </div>
         <div
           css={{
-            backgroundColor: colors.darker,
+            backgroundColor: colors.yellow,
             bottom: 44, // iOS Safari's inert "bottom 44px"
             color: colors.brand,
             display: 'none', // gets overriden at small screen sizes

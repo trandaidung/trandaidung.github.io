@@ -60,7 +60,7 @@ const AllBlogPosts = ({data, location, blogType}: Props) => (
                 <h2
                   css={{
                     fontSize: 24,
-                    color: colors.dark,
+                    color: colors.darkBlue,
                     lineHeight: 1.3,
                     fontWeight: 700,
                   }}>

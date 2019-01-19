@@ -66,7 +66,7 @@ const primaryStyle = {
   },
 
   ':hover': {
-    backgroundColor: colors.darker,
+    backgroundColor: colors.yellow,
   },
 };
 
@@ -75,7 +75,7 @@ const secondaryStyle = {
   transition: 'color 0.2s ease-out',
 
   ':hover': {
-    color: colors.darker,
+    color: colors.yellow,
   },
 };
 

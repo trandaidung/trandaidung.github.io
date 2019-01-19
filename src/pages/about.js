@@ -56,7 +56,7 @@ const aboutStyle = {
 };
 
 const title = {
-  color: colors.dark,
+  color: colors.darkBlue,
   fontSize: 60,
   lineHeight: '65px',
   fontWeight: 700,

@@ -139,7 +139,7 @@ const whiteHeader = {
 };
 
 const normalHeader = {
-  backgroundColor: colors.bgHeader,
+  backgroundColor: colors.yellowLight,
 };
 
 const container = {
@@ -231,7 +231,7 @@ const channelNav = {
 };
 
 const channelItem = {
-  color: colors.dark,
+  color: colors.darkBlue,
   padding: '5px 10px',
   marginLeft: 10,
   whiteSpace: 'nowrap',
@@ -243,7 +243,7 @@ const channelItem = {
 
   ':focus': {
     outline: 0,
-    backgroundColor: colors.lighter,
+    backgroundColor: colors.lightGrey,
     borderRadius: 15,
   },
 };

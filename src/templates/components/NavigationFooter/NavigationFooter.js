@@ -15,7 +15,7 @@ const NavigationFooter = ({next, prev, location}) => {
   return (
     <div
       css={{
-        background: colors.dark,
+        background: colors.darkBlue,
         color: colors.white,
         paddingTop: 50,
         paddingBottom: 50,
