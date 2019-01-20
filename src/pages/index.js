@@ -23,23 +23,19 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      screenWidth: typeof window !== 'undefined' ? window.innerWidth : null,
+      screenWidth: 0,
     };
-
     this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   updateDimensions() {
     this.setState({
-      screenWidth: typeof window !== 'undefined' ? window.innerWidth : null,
+      screenWidth: window.innerWidth,
     });
   }
 
-  componentWillMount() {
-    this.updateDimensions();
-  }
-
   componentDidMount() {
+    this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
   }
 
