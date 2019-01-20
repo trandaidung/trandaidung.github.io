@@ -12,7 +12,8 @@ import React from 'react';
 import {colors, fonts, media} from 'theme';
 import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
 
-import logoSvg from 'icons/logo.svg';
+import mainLogoSvg from 'icons/logo.svg';
+import externalLogoSvg from 'icons/external-logo.svg';
 
 type Props = {
   location: Location,
@@ -65,11 +66,17 @@ class Header extends React.Component<Props, State> {
     const isHomePage =
       location.pathname === '/' || location.pathname === '/an/';
 
-    let headerType;
+    let headerType, logoTextColor, whiteChannel, logoSvg;
     if (isHomePage && isTop) {
-      headerType = whiteHeader;
+      headerType = transparentHeader;
+      logoTextColor = logoTextWhite;
+      whiteChannel = whiteText;
+      logoSvg = externalLogoSvg;
     } else {
       headerType = normalHeader;
+      logoTextColor = logoTextPurple;
+      whiteChannel = null;
+      logoSvg = mainLogoSvg;
     }
 
     return (
@@ -78,8 +85,8 @@ class Header extends React.Component<Props, State> {
           <Container>
             <div css={[container]}>
               <Link css={[logoWrapper]} to="/">
-                <img src={logoSvg} alt="" height="30" />
-                <span css={[logoText]}>an</span>
+                <img src={logoSvg} alt="" height="40" />
+                <span css={[logoText, logoTextColor]}>an</span>
               </Link>
 
               <nav css={[nav]}>
@@ -87,30 +94,33 @@ class Header extends React.Component<Props, State> {
                   isActive={location.pathname.includes('/vocabulary')}
                   title="Vocabulary"
                   to="/vocabulary/"
+                  whiteColor={isHomePage && isTop}
                 />
                 <HeaderLink
                   isActive={location.pathname.includes('/grammar')}
                   title="Grammar"
                   to="/grammar/"
+                  whiteColor={isHomePage && isTop}
                 />
                 <HeaderLink
                   isActive={location.pathname.includes('/communication')}
                   title="Communication"
                   to="/communication/"
+                  whiteColor={isHomePage && isTop}
                 />
               </nav>
 
               <div css={[channelNav]}>
-                <a css={[channelItem]} href="/about/" rel="noopener">
+                <a css={[channelItem, whiteChannel]} href="/about/" rel="noopener">
                   About me
                 </a>
                 <a
-                  css={[channelItem]}
+                  css={[channelItem, whiteChannel]}
                   href="https://github.com/facebook/react/"
                   target="_blank"
                   rel="noopener">
                   Facebook
-                  <ExternalLinkSvg cssProps={[externalLinkSvg]} />
+                  <ExternalLinkSvg cssProps={[externalLinkSvg, whiteChannel]} />
                 </a>
               </div>
             </div>
@@ -122,7 +132,6 @@ class Header extends React.Component<Props, State> {
 }
 
 const headerContainer = {
-  backgroundColor: colors.white,
   position: 'fixed',
   zIndex: 1,
   width: '100%',
@@ -134,12 +143,12 @@ const header = {
   transition: 'background-color 0.3s linear',
 };
 
-const whiteHeader = {
-  backgroundColor: colors.white,
+const transparentHeader = {
+  backgroundColor: 'transparent',
 };
 
 const normalHeader = {
-  backgroundColor: colors.yellowLight,
+  backgroundColor: colors.white,
 };
 
 const container = {
@@ -176,7 +185,6 @@ const logoWrapper = {
 };
 
 const logoText = {
-  color: colors.brand,
   marginLeft: 10,
   fontWeight: 700,
   fontSize: 20,
@@ -197,6 +205,12 @@ const logoText = {
     border: 0,
   },
 };
+const logoTextWhite = {
+  color: colors.white,
+}
+const logoTextPurple = {
+  color: colors.brand,
+}
 
 const nav = {
   display: 'flex',
@@ -253,5 +267,9 @@ const externalLinkSvg = {
   verticalAlign: -2,
   color: colors.subtle,
 };
+
+const whiteText = {
+  color: colors.white,
+}
 
 export default Header;

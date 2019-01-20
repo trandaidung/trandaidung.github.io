@@ -15,8 +15,8 @@ type Props = {
   to: string,
 };
 
-const HeaderLink = ({isActive, title, to}: Props) => (
-  <Link css={[style, isActive && activeStyle]} to={to}>
+const HeaderLink = ({isActive, title, to, whiteColor}: Props) => (
+  <Link css={[style, isActive && activeStyle, whiteColor && whiteText]} to={to}>
     {title}
     {isActive && <span css={activeAfterStyle} />}
   </Link>
@@ -77,5 +77,9 @@ const activeAfterStyle = {
     zIndex: 1,
   },
 };
+
+const whiteText = {
+  color: colors.white,
+}
 
 export default HeaderLink;

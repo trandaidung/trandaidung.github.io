@@ -17,8 +17,34 @@ import {keys} from 'lodash';
 import {colors, media, sharedStyles} from 'theme';
 
 import bookLoverSvg from 'images/book_lover.svg';
+import bgBanner from 'images/bg_banner.png';
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      screenWidth: window.innerWidth
+    }
+
+    this.updateDimensions = this.updateDimensions.bind(this)
+  }
+  updateDimensions() {
+    this.setState({
+      screenWidth: document.documentElement.clientWidth
+    });
+  }
+
+  componentWillMount() {
+    this.updateDimensions();
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
   render() {
     const {data, location} = this.props;
 
@@ -30,7 +56,17 @@ class Home extends Component {
         />
         <div css={[layoutWrapper]}>
           <header css={[header]}>
-            <div css={[bannerContainer]}>
+            <div css={[
+              bannerContainer, 
+              {
+                [media.size('medium')]: {
+                  height: '400px !important',
+                },
+                [media.greaterThan('medium')]: {
+                  height: this.state.screenWidth/1.85,
+                },
+              }
+            ]}>
               <div css={[introContainer]}>
                 <Flex css={[introWrapper]}>
                   <h1 css={title}>Welcome to my blog</h1>
@@ -119,6 +155,23 @@ const layoutWrapper = {
 const header = {
   backgroundColor: colors.white,
   color: colors.darkBlue,
+  position: 'relative',
+  '::before': {
+    content: ' ',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundImage: `url(${bgBanner})`,
+    backgroundRepeat: 'no-repeat',
+    [media.greaterThan('medium')]: {
+      backgroundSize: '100% auto',
+    },
+    [media.size('medium')]: {
+      backgroundSize: '100% 400px !important',
+    },
+  }, 
 };
 
 const bannerContainer = {
@@ -131,20 +184,11 @@ const bannerContainer = {
     paddingBottom: 70,
   },
 
-  [media.size('large')]: {
-    height: '500px !important',
-  },
-
-  [media.size('medium')]: {
-    height: '400px !important',
-  },
-
   [media.greaterThan('medium')]: {
     justifyContent: 'flex-start',
     paddingTop: 95,
     paddingBottom: 85,
     maxWidth: 1500, // Positioning of background logo
-    height: 600,
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
