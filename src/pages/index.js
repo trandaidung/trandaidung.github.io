@@ -24,7 +24,7 @@ class Home extends Component {
     super(props);
 
     const isDocument = typeof document !== 'undefined';
-    
+
     this.state = {
       screenWidth: isDocument ? window.innerWidth : '',
     };
@@ -65,7 +65,7 @@ class Home extends Component {
               css={[
                 bannerContainer,
                 {
-                  [media.size('medium')]: {
+                  [media.lessThan('medium')]: {
                     height: '400px !important',
                   },
                   [media.greaterThan('medium')]: {
