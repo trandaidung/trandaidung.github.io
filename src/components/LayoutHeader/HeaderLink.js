@@ -13,6 +13,7 @@ type Props = {
   isActive: boolean,
   title: string,
   to: string,
+  whiteColor: boolean,
 };
 
 const HeaderLink = ({isActive, title, to, whiteColor}: Props) => (
@@ -80,6 +81,6 @@ const activeAfterStyle = {
 
 const whiteText = {
   color: colors.white,
-}
+};
 
 export default HeaderLink;

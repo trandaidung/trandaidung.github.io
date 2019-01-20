@@ -10,7 +10,6 @@ import React, {Component} from 'react';
 import Flex from 'components/Flex';
 import Footer from 'components/LayoutFooter';
 import Header from 'components/LayoutHeader';
-import {media} from 'theme';
 
 patchDOMForGoogleTranslate();
 

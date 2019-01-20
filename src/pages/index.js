@@ -21,17 +21,19 @@ import bgBanner from 'images/bg_banner.png';
 
 class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      screenWidth: window.innerWidth
-    }
+      screenWidth: '',
+    };
 
-    this.updateDimensions = this.updateDimensions.bind(this)
+    this.updateDimensions = this.updateDimensions.bind(this);
   }
   updateDimensions() {
-    this.setState({
-      screenWidth: document.documentElement.clientWidth
-    });
+    if (typeof document !== 'undefined') {
+      this.setState({
+        screenWidth: document.documentElement.clientWidth,
+      });
+    }
   }
 
   componentWillMount() {
@@ -39,11 +41,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener('resize', this.updateDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions);
   }
   render() {
     const {data, location} = this.props;
@@ -56,22 +58,23 @@ class Home extends Component {
         />
         <div css={[layoutWrapper]}>
           <header css={[header]}>
-            <div css={[
-              bannerContainer, 
-              {
-                [media.size('medium')]: {
-                  height: '400px !important',
+            <div
+              css={[
+                bannerContainer,
+                {
+                  [media.size('medium')]: {
+                    height: '400px !important',
+                  },
+                  [media.greaterThan('medium')]: {
+                    height: this.state.screenWidth / 1.85,
+                  },
                 },
-                [media.greaterThan('medium')]: {
-                  height: this.state.screenWidth/1.85,
-                },
-              }
-            ]}>
+              ]}>
               <div css={[introContainer]}>
                 <Flex css={[introWrapper]}>
                   <h1 css={title}>Discover another way to learn English</h1>
                   <p css={[description]}>
-                    Learning English is not difficult like you thought. 
+                    Learning English is not difficult like you thought.
                   </p>
                   <Flex valign="center" css={[buttonsWrapper]}>
                     <CtaItem>
@@ -171,7 +174,7 @@ const header = {
     [media.size('medium')]: {
       backgroundSize: '100% 400px !important',
     },
-  }, 
+  },
 };
 
 const bannerContainer = {

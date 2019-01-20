@@ -111,7 +111,10 @@ class Header extends React.Component<Props, State> {
               </nav>
 
               <div css={[channelNav]}>
-                <a css={[channelItem, whiteChannel]} href="/about/" rel="noopener">
+                <a
+                  css={[channelItem, whiteChannel]}
+                  href="/about/"
+                  rel="noopener">
                   About me
                 </a>
                 <a
@@ -207,10 +210,10 @@ const logoText = {
 };
 const logoTextWhite = {
   color: colors.white,
-}
+};
 const logoTextPurple = {
   color: colors.brand,
-}
+};
 
 const nav = {
   display: 'flex',
@@ -270,6 +273,6 @@ const externalLinkSvg = {
 
 const whiteText = {
   color: colors.white,
-}
+};
 
 export default Header;

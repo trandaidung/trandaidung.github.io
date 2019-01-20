@@ -408,7 +408,7 @@ const sharedStyles = {
     '& strong strong': {
       textDecoration: 'underline',
       fontWeight: 'unset',
-    }
+    },
   },
 };
 
