@@ -22,15 +22,13 @@ import bgBanner from 'images/bg_banner.png';
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    const isDocument = typeof document !== 'undefined';
-
     this.state = {
-      screenWidth: isDocument ? window.innerWidth : '',
+      screenWidth: null,
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
   }
+
   updateDimensions() {
     if (typeof document !== 'undefined') {
       this.setState({
@@ -44,6 +42,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
   }
 
