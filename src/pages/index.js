@@ -23,18 +23,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      screenWidth: null,
+      screenWidth: typeof window !== 'undefined' ? window.innerWidth : null,
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   updateDimensions() {
-    if (typeof document !== 'undefined') {
-      this.setState({
-        screenWidth: document.documentElement.clientWidth,
-      });
-    }
+    this.setState({
+      screenWidth: typeof window !== 'undefined' ? window.innerWidth : null,
+    });
   }
 
   componentWillMount() {
@@ -42,13 +40,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
   }
+
   render() {
     const {data, location} = this.props;
 
@@ -68,7 +66,7 @@ class Home extends Component {
                     height: '400px !important',
                   },
                   [media.greaterThan('medium')]: {
-                    height: this.state.screenWidth / 1.85,
+                    height: this.state.screenWidth / 1.85 || 'unset',
                   },
                 },
               ]}>
