@@ -22,8 +22,11 @@ import bgBanner from 'images/bg_banner.png';
 class Home extends Component {
   constructor(props) {
     super(props);
+
+    const isDocument = typeof document !== 'undefined';
+    
     this.state = {
-      screenWidth: '',
+      screenWidth: isDocument ? window.innerWidth : '',
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
