@@ -16,7 +16,7 @@ import createOgUrl from 'utils/createOgUrl';
 import {keys} from 'lodash';
 import {colors, media, sharedStyles} from 'theme';
 
-import bookLoverSvg from 'images/book_lover.svg';
+import iconBanner from 'images/icon_banner.svg';
 import bgBanner from 'images/bg_banner.png';
 
 class Home extends Component {
@@ -69,9 +69,9 @@ class Home extends Component {
             ]}>
               <div css={[introContainer]}>
                 <Flex css={[introWrapper]}>
-                  <h1 css={title}>Welcome to my blog</h1>
+                  <h1 css={title}>Discover another way to learn English</h1>
                   <p css={[description]}>
-                    A JavaScript library for building user interfaces
+                    Learning English is not difficult like you thought. 
                   </p>
                   <Flex valign="center" css={[buttonsWrapper]}>
                     <CtaItem>
@@ -175,12 +175,12 @@ const header = {
 };
 
 const bannerContainer = {
-  paddingTop: 45,
-  paddingBottom: 20,
+  paddingTop: 100,
+  paddingBottom: 50,
   display: 'flex',
   justifyContent: 'center',
   [media.greaterThan('small')]: {
-    paddingTop: 60,
+    paddingTop: 120,
     paddingBottom: 70,
   },
 
@@ -195,11 +195,16 @@ const bannerContainer = {
     '::before': {
       content: ' ',
       position: 'absolute',
-      top: 0,
       left: 0,
       bottom: 0,
-      right: 0,
-      backgroundImage: `url(${bookLoverSvg})`,
+      right: 50,
+      [media.lessThan('large')]: {
+        top: 0,
+      },
+      [media.greaterThan('large')]: {
+        top: 60,
+      },
+      backgroundImage: `url(${iconBanner})`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '100% 50px',
       backgroundSize: '45% auto',
@@ -224,27 +229,31 @@ const introWrapper = {
   alignItems: 'center !important',
 
   [media.greaterThan('medium')]: {
-    alignItems: 'flex-end !important',
+    alignItems: 'flex-start !important',
   },
 };
 
 const title = {
-  color: colors.black,
-  textAlign: 'right',
+  color: colors.white,
+  textAlign: 'center',
   margin: 0,
-  fontSize: 45,
+  fontSize: 35,
   letterSpacing: '0.01em',
   [media.size('xsmall')]: {
-    fontSize: 30,
+    fontSize: 25,
+  },
+  [media.greaterThan('medium')]: {
+    textAlign: 'left',
   },
   [media.greaterThan('xlarge')]: {
-    fontSize: 60,
+    fontSize: 50,
   },
 };
 
 const description = {
+  color: colors.white,
   paddingTop: 15,
-  textAlign: 'right',
+  textAlign: 'center',
   fontSize: 24,
   letterSpacing: '0.01em',
   fontWeight: 200,
@@ -255,7 +264,9 @@ const description = {
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-
+  [media.greaterThan('medium')]: {
+    textAlign: 'left',
+  },
   [media.greaterThan('xlarge')]: {
     paddingTop: 20,
     fontSize: 30,
